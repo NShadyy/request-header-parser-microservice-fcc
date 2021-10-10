@@ -1,11 +1,11 @@
 // server.js
 // where your node app starts
 
-const express = require("express");
-const rTracer = require("cls-rtracer");
-const { ApiLoggerMiddleware, Logger } = require("./logger");
-const cors = require("cors");
-require("dotenv").config();
+const express = require('express');
+const rTracer = require('cls-rtracer');
+const { ApiLoggerMiddleware, Logger } = require('./logger');
+const cors = require('cors');
+require('dotenv').config();
 
 // init project
 var app = express();
@@ -16,22 +16,27 @@ app.use(rTracer.expressMiddleware(), ApiLoggerMiddleware);
 app.use(cors({ optionsSuccessStatus: 200 })); // some legacy browsers choke on 204
 
 // http://expressjs.com/en/starter/static-files.html
-app.use(express.static("public"));
+app.use(express.static('public'));
 
 // http://expressjs.com/en/starter/basic-routing.html
-app.get("/", function (req, res) {
-  res.sendFile(__dirname + "/views/index.html");
+app.get('/', function (req, res) {
+  res.sendFile(__dirname + '/views/index.html');
 });
 
 // your first API endpoint...
-app.get("/api/hello", function (req, res) {
-  res.json({ greeting: "hello API" });
+app.get('/api/hello', function (req, res) {
+  res.json({ greeting: 'hello API' });
+});
+
+app.get('/api/whoami', function (req, res) {
+  res.json({
+    ipaddress: req.headers['x-forwarded-for'] || req.socket.remoteAddress,
+    language: req.headers['accept-language'],
+    software: req.headers['user-agent'],
+  });
 });
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
-  Logger.info(
-    "Server",
-    `Your app is listening on port ${listener.address().port}`
-  );
+  Logger.info('Server', `Your app is listening on port ${listener.address().port}`);
 });
