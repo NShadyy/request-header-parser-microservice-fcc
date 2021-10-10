@@ -1,7 +1,7 @@
 {
-  "name": "request_header",
+  "name": "request-header-parser-microservice-fcc",
   "version": "0.0.1",
-  "description": "API project for freeCodeCamp",
+  "description": "Challenge project for FreeCodeCamp's 'Back End Development and APIs' Course",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -15,16 +15,25 @@
     "express": "^4.12.4",
     "express-winston": "^4.2.0",
     "lodash": "^4.17.21",
-    "winston": "^3.3.3"
+    "winston": "^3.3.3",
+    "winston-daily-rotate-file": "^4.5.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
   },
   "repository": {
     "type": "git",
-    "url": "https://hyperdev.com/#!/project/welcome-project"
+    "url": "https://github.com/NShadyy/request-header-parser-microservice-fcc"
   },
   "keywords": [
     "node",
-    "hyperdev",
-    "express"
+    "express",
+    "freecodecamp"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "author": {
+    "name": "Nakul Sharma",
+    "email": "nakul.165376@gmail.com",
+    "url": "https://www.linkedin.com/in/nakul5harma/"
+  }
 }

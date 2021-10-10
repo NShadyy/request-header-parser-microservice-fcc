@@ -9,6 +9,8 @@ require('dotenv').config();
 
 // init project
 var app = express();
+
+// logging middleware
 app.use(rTracer.expressMiddleware(), ApiLoggerMiddleware);
 
 // enable CORS (https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
